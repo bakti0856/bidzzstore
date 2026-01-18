@@ -6,97 +6,220 @@ const mainContent = document.getElementById('main-content');
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const productsGrid = document.getElementById('productsGrid');
+const filterBtns = document.querySelectorAll('.filter-btn');
 
 // ========================================
-// PRODUCTS DATA - APLIKASI PREMIUM
+// PRODUCTS DATA - LENGKAP
 // ========================================
 const products = [
+    // APP PREMIUM
     {
-        name: 'Alight Motion Pro',
-        description: '🎬 Edit video profesional dengan animasi motion graphics, efek VFX, dan multi-layer editing',
-        price: 'Rp 5.000',
-        payment: 'QRIS, Dana, Gopay, OVO',
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-                <line x1="7" y1="2" x2="7" y2="22"></line>
-                <line x1="17" y1="2" x2="17" y2="22"></line>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <line x1="2" y1="7" x2="7" y2="7"></line>
-                <line x1="2" y1="17" x2="7" y2="17"></line>
-                <line x1="17" y1="7" x2="22" y2="7"></line>
-                <line x1="17" y1="17" x2="22" y2="17"></line>
-              </svg>`,
-        whatsappText: 'Halo BidzzStore, saya ingin membeli Alight Motion Pro seharga Rp 5.000'
+        category: 'app',
+        name: 'Alight Motion Premium',
+        description: 'Acc Buyer - Akun premium untuk edit video profesional',
+        price: 'Rp 10.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Alight Motion Premium Acc Buyer 10k'
     },
     {
-        name: 'CapCut Pro',
-        description: '✂️ Video editor powerful dengan AI tools, template premium, dan export tanpa watermark',
+        category: 'app',
+        name: 'Alight Motion Premium',
+        description: 'Acc Generator - Generate akun sendiri',
+        price: 'Rp 5.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Alight Motion Premium Acc Generator 5k'
+    },
+    {
+        category: 'app',
+        name: 'CapCut Pro 35 Day',
+        description: 'Private - 35 hari akses penuh',
         price: 'Rp 20.000',
-        payment: 'QRIS, Dana, Gopay, OVO',
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-              </svg>`,
-        whatsappText: 'Halo BidzzStore, saya ingin membeli CapCut Pro seharga Rp 20.000'
+        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 35 Day Private 20k'
     },
     {
-        name: 'VIU Premium',
-        description: '📺 Streaming drama Korea, variety show, dan konten Asia tanpa iklan dengan kualitas HD',
-        price: 'Rp 5.000',
-        payment: 'QRIS, Dana, Gopay, OVO',
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"></path>
-                <line x1="2" y1="20" x2="2.01" y2="20"></line>
-              </svg>`,
-        whatsappText: 'Halo BidzzStore, saya ingin membeli VIU Premium seharga Rp 5.000'
+        category: 'app',
+        name: 'CapCut Pro 28 Day',
+        description: 'Private - 28 hari akses penuh',
+        price: 'Rp 17.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 28 Day Private 17k'
     },
     {
-        name: 'Canva Pro',
-        description: '🎨 Akses penuh ke jutaan template, foto premium, font eksklusif, dan fitur design tools',
-        price: 'Rp 5.000',
-        payment: 'QRIS, Dana, Gopay, OVO',
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-              </svg>`,
-        whatsappText: 'Halo BidzzStore, saya ingin membeli Canva Pro seharga Rp 5.000'
-    },
-    {
-        name: 'Spotify Premium',
-        description: '🎵 Nikmati musik tanpa iklan, download lagu offline, dan audio quality tinggi',
+        category: 'app',
+        name: 'CapCut Pro 21 Day',
+        description: 'Private - 21 hari akses penuh',
         price: 'Rp 15.000',
-        payment: 'QRIS, Dana, Gopay, OVO',
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M8 14.5c1.5-1 4-1 5.5 0M7.5 10.5c2.5-1.5 6.5-1.5 9 0"></path>
-              </svg>`,
-        whatsappText: 'Halo BidzzStore, saya ingin membeli Spotify Premium seharga Rp 15.000'
+        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 21 Day Private 15k'
     },
     {
-    name: 'Wink Pro',
-    description: '✨ AI video editor dengan retouching wajah otomatis, smooth filter, dan body reshaping',
-    price: 'Rp 6.000',
-    payment: 'QRIS, Dana, Gopay, OVO',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-            <path d="M15 9c-.5.5-.5 1.5 0 2"></path>
-          </svg>`,
-    whatsappText: 'Halo BidzzStore, saya ingin membeli Wink Pro seharga Rp 6.000'
-},
-{
-    name: 'YouTube Premium',
-    description: '▶️ Tonton video tanpa iklan, background play, dan download untuk offline viewing',
-    price: 'Rp 15.000',
-    payment: 'QRIS, Dana, Gopay, OVO',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-          </svg>`,
-    whatsappText: 'Halo BidzzStore, saya ingin membeli YouTube Premium seharga Rp 15.000'
-}
+        category: 'app',
+        name: 'CapCut Pro 14 Day',
+        description: 'Private - 14 hari akses penuh',
+        price: 'Rp 13.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 14 Day Private 13k'
+    },
+    {
+        category: 'app',
+        name: 'CapCut Pro 7 Day',
+        description: 'Private - 7 hari akses penuh',
+        price: 'Rp 9.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 7 Day Private 9k'
+    },
+    {
+        category: 'app',
+        name: 'YouTube Premium',
+        description: 'Via Invite - Tanpa iklan, download offline',
+        price: 'Rp 2.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium Via Invite 2k'
+    },
+    {
+        category: 'app',
+        name: 'Canva Pro',
+        description: 'Via Invite - Akses template & fitur premium',
+        price: 'Rp 3.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro Via Invite 3k'
+    },
+    {
+        category: 'app',
+        name: 'VIU Premium',
+        description: 'Streaming drama Korea tanpa iklan',
+        price: 'Rp 4.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli VIU Premium 4k'
+    },
+    {
+        category: 'app',
+        name: 'Wink Premium 7D',
+        description: 'Acc Seller - 7 hari edit foto AI',
+        price: 'Rp 5.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Wink Premium 7D Acc Seller 5k'
+    },
+    {
+        category: 'app',
+        name: 'Wink Premium 7D',
+        description: 'Acc Buyer - 7 hari edit foto AI',
+        price: 'Rp 7.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Wink Premium 7D Acc Buyer 7k'
+    },
+    
+    // JASA TOP UP & DESIGN
+    {
+        category: 'jasa',
+        name: 'Jasa Suntik All Sosmed',
+        description: 'Suntik followers, likes, views untuk semua sosial media',
+        price: 'Mulai 5k',
+        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Suntik All Sosmed'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Pembuatan Logo',
+        description: 'Design logo profesional custom sesuai keinginan',
+        price: 'Rp 2.000 / Logo',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Pembuatan Logo 2k'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid Watermark',
+        description: 'Hilangkan watermark dari foto/video',
+        price: 'Harga Nego',
+        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Paid Watermark'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid GFX',
+        description: 'Design grafis profesional untuk konten Anda',
+        price: 'Harga Nego',
+        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Paid GFX'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Cover Saldo',
+        description: 'Cover/Edit saldo untuk kebutuhan Anda',
+        price: 'Harga Nego',
+        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Cover Saldo'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Pulsa',
+        description: 'Top up pulsa semua operator dengan harga murah',
+        price: 'Harga Murah',
+        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Pulsa'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Bug',
+        description: 'Jasa bug aplikasi custom per bug',
+        price: 'Rp 4.000 / Bug',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Bug 4k per bug'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Buat Poster',
+        description: 'Design poster custom sesuai kebutuhan Anda',
+        price: 'Tergantung Poster',
+        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Buat Poster'
+    },
+    
+    // APK BUG
+    {
+        category: 'apk',
+        name: 'Apk Bug WhatsApp',
+        description: 'Aplikasi bug WhatsApp dengan fitur lengkap',
+        price: 'Rp 10.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Apk Bug WhatsApp 10k'
+    },
+    {
+        category: 'apk',
+        name: 'Apk Bug Telegram',
+        description: 'Aplikasi bug Telegram dengan fitur lengkap',
+        price: 'Rp 10.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Apk Bug Telegram 10k'
+    },
+    {
+        category: 'apk',
+        name: 'Murlog Men',
+        description: 'Aplikasi murlog khusus untuk men',
+        price: 'Rp 2.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Murlog Men 2k'
+    },
+    {
+        category: 'apk',
+        name: 'PT (Premium Tools)',
+        description: 'Tools premium untuk berbagai kebutuhan',
+        price: 'Rp 5.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli PT (Premium Tools) 5k'
+    },
+    {
+        category: 'apk',
+        name: 'OWN',
+        description: 'Aplikasi OWN dengan fitur eksklusif',
+        price: 'Rp 4.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli OWN 4k'
+    },
+    {
+        category: 'apk',
+        name: 'Mursun',
+        description: 'Aplikasi mursun lengkap dan update',
+        price: 'Rp 10.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Mursun 10k'
+    },
+    {
+        category: 'apk',
+        name: 'Apk Bug Input',
+        description: 'Bug input dengan ban dan fitur lainnya',
+        price: 'Rp 12.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Apk Bug Input 12k'
+    },
+    {
+        category: 'apk',
+        name: 'Apk QR Tanpa KTP',
+        description: 'Generate QR tanpa perlu KTP',
+        price: 'Rp 3.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Apk QR Tanpa KTP 3k'
+    },
+    {
+        category: 'apk',
+        name: 'Apk Hyrizz',
+        description: 'Aplikasi Hyrizz dengan berbagai fitur',
+        price: 'Rp 4.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Apk Hyrizz 4k'
+    }
 ];
 
 // ========================================
@@ -104,7 +227,7 @@ const products = [
 // ========================================
 function createMoneyParticle() {
     const particle = document.createElement('div');
-    const symbols = ['💰', '💵', '💴', '💶', '💷', '💳', '🪙', '💸'];
+    const symbols = ['💰', '💵', '💴', '💶', '💷', '💳', '🪙', '💸', '💎'];
     const symbol = symbols[Math.floor(Math.random() * symbols.length)];
     
     particle.textContent = symbol;
@@ -112,10 +235,10 @@ function createMoneyParticle() {
         position: fixed;
         font-size: ${15 + Math.random() * 15}px;
         pointer-events: none;
-        z-index: 1;
+        z-index: 9998;
         left: ${Math.random() * window.innerWidth}px;
         top: -30px;
-        opacity: 0.6;
+        opacity: 0.7;
         animation: fall-money ${3 + Math.random() * 4}s linear;
     `;
     
@@ -131,24 +254,63 @@ const moneyStyle = document.createElement('style');
 moneyStyle.textContent = `
     @keyframes fall-money {
         to {
-            transform: translateY(${window.innerHeight + 50}px) rotate(360deg);
+            transform: translateY(${window.innerHeight + 50}px) rotate(${360 + Math.random() * 360}deg);
             opacity: 0;
         }
     }
 `;
 document.head.appendChild(moneyStyle);
 
-// Create money particles periodically during loading
-let moneyInterval;
+// ========================================
+// TECH PARTICLES
+// ========================================
+function createTechParticle() {
+    const particle = document.createElement('div');
+    const colors = ['#ff6600', '#00d4ff', '#ffcc00'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    particle.style.cssText = `
+        position: fixed;
+        width: ${2 + Math.random() * 2}px;
+        height: ${2 + Math.random() * 2}px;
+        background: ${color};
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+        left: ${Math.random() * window.innerWidth}px;
+        top: -10px;
+        box-shadow: 0 0 10px ${color};
+        animation: fall ${3 + Math.random() * 3}s linear;
+    `;
+    
+    document.body.appendChild(particle);
+    
+    setTimeout(() => {
+        particle.remove();
+    }, 6000);
+}
+
+const techStyle = document.createElement('style');
+techStyle.textContent = `
+    @keyframes fall {
+        to {
+            transform: translateY(${window.innerHeight}px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(techStyle);
 
 // ========================================
-// LOADING ANIMATION
+// LOADING ANIMATION WITH MONEY RAIN
 // ========================================
+let moneyInterval;
+let techInterval;
+
 window.addEventListener('load', () => {
-    // Create money particles during loading
-    moneyInterval = setInterval(createMoneyParticle, 200);
+    // Money rain during loading
+    moneyInterval = setInterval(createMoneyParticle, 150);
     
-    // Simulate loading time
     setTimeout(() => {
         clearInterval(moneyInterval);
         loadingScreen.style.opacity = '0';
@@ -156,9 +318,50 @@ window.addEventListener('load', () => {
             loadingScreen.style.display = 'none';
             mainContent.classList.remove('hidden');
             document.body.style.overflow = 'auto';
+            
+            // Start tech particles after loading
+            techInterval = setInterval(createTechParticle, 300);
         }, 500);
-    }, 3000);
+    }, 2500);
 });
+
+// ========================================
+// CURSOR GLOW EFFECT (Desktop)
+// ========================================
+if (window.innerWidth > 768) {
+    let lastTime = 0;
+    const throttleDelay = 50;
+    
+    document.addEventListener('mousemove', (e) => {
+        const currentTime = Date.now();
+        if (currentTime - lastTime < throttleDelay) return;
+        lastTime = currentTime;
+        
+        const cursorGlow = document.createElement('div');
+        cursorGlow.style.cssText = `
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 102, 0, 0.15), transparent 70%);
+            pointer-events: none;
+            z-index: 9997;
+            transform: translate(-50%, -50%);
+            left: ${e.clientX}px;
+            top: ${e.clientY}px;
+            transition: opacity 0.3s ease;
+        `;
+        
+        document.body.appendChild(cursorGlow);
+        
+        setTimeout(() => {
+            cursorGlow.style.opacity = '0';
+            setTimeout(() => {
+                cursorGlow.remove();
+            }, 300);
+        }, 100);
+    });
+}
 
 // ========================================
 // MOBILE NAVIGATION
@@ -168,7 +371,6 @@ navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Close menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
@@ -184,7 +386,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const offsetTop = target.offsetTop - 80;
+            const offsetTop = target.offsetTop - 70;
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
@@ -194,7 +396,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========================================
-// ACTIVE NAVIGATION LINK
+// ACTIVE NAVIGATION
 // ========================================
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id]');
@@ -217,33 +419,65 @@ window.addEventListener('scroll', () => {
 });
 
 // ========================================
+// GLITCH EFFECT
+// ========================================
+let glitchInterval;
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        clearInterval(glitchInterval);
+    } else {
+        if (!glitchInterval) {
+            glitchInterval = setInterval(() => {
+                const heroTitle = document.querySelector('.hero-title');
+                if (heroTitle && Math.random() > 0.95) {
+                    heroTitle.style.textShadow = `
+                        ${Math.random() * 5 - 2.5}px 0 #00d4ff,
+                        ${Math.random() * 5 - 2.5}px 0 #ff6600
+                    `;
+                    setTimeout(() => {
+                        heroTitle.style.textShadow = 'none';
+                    }, 50);
+                }
+            }, 100);
+        }
+    }
+});
+
+// ========================================
 // RENDER PRODUCTS
 // ========================================
-function renderProducts() {
+function renderProducts(filter = 'all') {
     productsGrid.innerHTML = '';
     
-    products.forEach((product, index) => {
-        const whatsappNumber = '6289660770777'; // Nomor WhatsApp dari logo
+    const filteredProducts = filter === 'all' 
+        ? products 
+        : products.filter(p => p.category === filter);
+    
+    filteredProducts.forEach((product, index) => {
+        const whatsappNumber = '6289660770777';
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(product.whatsappText)}`;
         
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
-        productCard.style.animationDelay = `${index * 0.1}s`;
+        productCard.style.animationDelay = `${index * 0.05}s`;
+        
+        const categoryName = {
+            'app': '📱 App Premium',
+            'jasa': '⚙️ Jasa',
+            'apk': '🔧 Apk Bug'
+        }[product.category];
         
         productCard.innerHTML = `
-            <div class="product-icon">
-                ${product.icon}
-            </div>
+            <div class="product-category">${categoryName}</div>
             <h3 class="product-name">${product.name}</h3>
             <p class="product-description">${product.description}</p>
             <div class="product-price">${product.price}</div>
-            <div class="product-payment">${product.payment}</div>
             <a href="${whatsappLink}" target="_blank" class="buy-button">
-                <span>🛒 BUY NOW</span>
+                <span>💬 ORDER NOW</span>
             </a>
         `;
         
-        // Add mouse move effect for glow
+        // Mouse glow effect on card
         productCard.addEventListener('mousemove', (e) => {
             const rect = productCard.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -257,11 +491,24 @@ function renderProducts() {
 }
 
 // ========================================
+// CATEGORY FILTER
+// ========================================
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const category = btn.getAttribute('data-category');
+        renderProducts(category);
+    });
+});
+
+// ========================================
 // SCROLL ANIMATIONS
 // ========================================
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -273,145 +520,37 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for scroll animation
 function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.product-card, .contact-card');
+    const animatedElements = document.querySelectorAll('.product-card, .contact-card, .wa-btn');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(50px)';
+        el.style.transform = 'translateY(30px)';
         el.style.transition = 'all 0.6s ease';
         observer.observe(el);
     });
 }
 
 // ========================================
-// PARALLAX EFFECT ON HERO
+// PARALLAX EFFECT
 // ========================================
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-content');
+    const heroContent = document.querySelector('.hero-content');
     
-    parallaxElements.forEach(element => {
+    if (heroContent && scrolled < window.innerHeight) {
         const speed = 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
-
-// ========================================
-// GLITCH EFFECT
-// ========================================
-let glitchInterval;
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        clearInterval(glitchInterval);
-    } else {
-        if (!glitchInterval) {
-            glitchInterval = setInterval(() => {
-                const glitchText = document.querySelector('.glitch-text');
-                if (glitchText && Math.random() > 0.95) {
-                    glitchText.style.textShadow = `
-                        ${Math.random() * 10 - 5}px 0 #00d4ff,
-                        ${Math.random() * 10 - 5}px 0 #ff6600
-                    `;
-                    setTimeout(() => {
-                        glitchText.style.textShadow = 'none';
-                    }, 50);
-                }
-            }, 100);
-        }
+        heroContent.style.transform = `translateY(${scrolled * speed}px)`;
     }
 });
 
 // ========================================
-// FLOATING COINS EFFECT IN HERO
-// ========================================
-function createFloatingCoin() {
-    const coin = document.createElement('div');
-    coin.textContent = '🪙';
-    coin.style.cssText = `
-        position: absolute;
-        font-size: 30px;
-        pointer-events: none;
-        left: ${Math.random() * 100}%;
-        bottom: -50px;
-        opacity: 0.4;
-        animation: float-up ${5 + Math.random() * 5}s ease-in-out infinite;
-    `;
-    
-    const heroCoins = document.querySelector('.floating-coins');
-    if (heroCoins) {
-        heroCoins.appendChild(coin);
-        
-        setTimeout(() => {
-            coin.remove();
-        }, 10000);
-    }
-}
-
-// Add CSS animation for floating coins
-const coinStyle = document.createElement('style');
-coinStyle.textContent = `
-    @keyframes float-up {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0;
-        }
-        10% {
-            opacity: 0.4;
-        }
-        90% {
-            opacity: 0.4;
-        }
-        100% {
-            transform: translateY(-${window.innerHeight}px) rotate(360deg);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(coinStyle);
-
-// Create floating coins periodically
-setInterval(createFloatingCoin, 2000);
-
-// ========================================
-// CURSOR GLOW EFFECT (Desktop only)
-// ========================================
-if (window.innerWidth > 768) {
-    document.addEventListener('mousemove', (e) => {
-        const cursorGlow = document.createElement('div');
-        cursorGlow.style.cssText = `
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 102, 0, 0.1), transparent 70%);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            left: ${e.clientX}px;
-            top: ${e.clientY}px;
-            transition: opacity 0.3s ease;
-        `;
-        
-        document.body.appendChild(cursorGlow);
-        
-        setTimeout(() => {
-            cursorGlow.style.opacity = '0';
-            setTimeout(() => {
-                cursorGlow.remove();
-            }, 300);
-        }, 100);
-    });
-}
-
-// ========================================
-// NAVBAR BACKGROUND ON SCROLL
+// NAVBAR SCROLL EFFECT
 // ========================================
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 50) {
         navbar.style.background = 'rgba(10, 10, 15, 0.98)';
-        navbar.style.boxShadow = '0 10px 30px rgba(255, 102, 0, 0.2)';
+        navbar.style.boxShadow = '0 5px 20px rgba(255, 102, 0, 0.3)';
     } else {
         navbar.style.background = 'rgba(10, 10, 15, 0.95)';
         navbar.style.boxShadow = 'none';
@@ -419,52 +558,11 @@ window.addEventListener('scroll', () => {
 });
 
 // ========================================
-// TECH PARTICLES
-// ========================================
-function createTechParticle() {
-    const particle = document.createElement('div');
-    particle.style.cssText = `
-        position: fixed;
-        width: 2px;
-        height: 2px;
-        background: #ff6600;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 1;
-        left: ${Math.random() * window.innerWidth}px;
-        top: -10px;
-        box-shadow: 0 0 10px #ff6600;
-        animation: fall ${3 + Math.random() * 3}s linear;
-    `;
-    
-    document.body.appendChild(particle);
-    
-    setTimeout(() => {
-        particle.remove();
-    }, 6000);
-}
-
-// Add CSS animation for tech particles
-const techStyle = document.createElement('style');
-techStyle.textContent = `
-    @keyframes fall {
-        to {
-            transform: translateY(${window.innerHeight}px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(techStyle);
-
-// Create tech particles periodically
-setInterval(createTechParticle, 400);
-
-// ========================================
 // BUTTON RIPPLE EFFECT
 // ========================================
 document.addEventListener('click', (e) => {
-    if (e.target.closest('.buy-button, .cta-button, .contact-button')) {
-        const button = e.target.closest('.buy-button, .cta-button, .contact-button');
+    if (e.target.closest('.buy-button, .cta-button, .contact-button, .wa-btn')) {
+        const button = e.target.closest('.buy-button, .cta-button, .contact-button, .wa-btn');
         const ripple = document.createElement('span');
         const rect = button.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
@@ -476,7 +574,7 @@ document.addEventListener('click', (e) => {
             width: ${size}px;
             height: ${size}px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.4);
             left: ${x}px;
             top: ${y}px;
             transform: scale(0);
@@ -492,12 +590,11 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Add ripple animation
 const rippleStyle = document.createElement('style');
 rippleStyle.textContent = `
     @keyframes ripple-effect {
         to {
-            transform: scale(2);
+            transform: scale(2.5);
             opacity: 0;
         }
     }
@@ -508,7 +605,7 @@ document.head.appendChild(rippleStyle);
 // INITIALIZE
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-    renderProducts();
+    renderProducts('all');
     setTimeout(initScrollAnimations, 100);
 });
 
@@ -516,22 +613,17 @@ document.addEventListener('DOMContentLoaded', () => {
 // PERFORMANCE OPTIMIZATION
 // ========================================
 if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
-    document.body.classList.add('reduced-motion');
-    
-    const reducedMotionStyle = document.createElement('style');
-    reducedMotionStyle.textContent = `
-        .reduced-motion * {
-            animation-duration: 0.5s !important;
-            transition-duration: 0.2s !important;
-        }
-    `;
-    document.head.appendChild(reducedMotionStyle);
+    // Reduce particle frequency on low-end devices
+    if (techInterval) {
+        clearInterval(techInterval);
+        techInterval = setInterval(createTechParticle, 600);
+    }
 }
 
 // ========================================
 // CONSOLE MESSAGE
 // ========================================
 console.log('%c💰 BIDZZSTORE 💰', 'color: #ff6600; font-size: 24px; font-weight: bold;');
-console.log('%cPremium Apps Marketplace', 'color: #00d4ff; font-size: 14px;');
+console.log('%cKebutuhan Digital Lengkap', 'color: #00d4ff; font-size: 14px;');
 console.log('%cWA: 0896-6077-0777', 'color: #ffcc00; font-size: 12px;');
-console.log('%cIG: @bidzz_railway | TT: @garamdanlemon', 'color: #a0a0b0; font-size: 12px;');
+console.log('%cIG: @bidzz_railway | TT: @garamdanlemon', 'color: #a0a0b0; font-size: 11px;');

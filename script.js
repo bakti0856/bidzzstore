@@ -219,6 +219,115 @@ const products = [
         description: 'Aplikasi Hyrizz dengan berbagai fitur',
         price: 'Rp 4.000',
         whatsappText: 'Halo BidzzStore, saya ingin beli Apk Hyrizz 4k'
+    },
+    
+    // TAMBAHAN APP PREMIUM
+    {
+        category: 'app',
+        name: 'Bulk Alight Motion',
+        description: 'Bulk akun Alight Motion premium',
+        price: 'Mulai 10k',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Bulk Alight Motion mulai 10k'
+    },
+    {
+        category: 'app',
+        name: 'iQIYI Sharing 1 Bulan',
+        description: 'Akun sharing iQIYI premium 1 bulan',
+        price: 'Rp 20.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli iQIYI Sharing 1 Bulan 20k'
+    },
+    {
+        category: 'app',
+        name: 'Duolingo Premium 1 Bulan',
+        description: 'Akses premium Duolingo untuk belajar bahasa',
+        price: 'Mulai 10k',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Duolingo Premium 1 Bulan mulai 10k'
+    },
+    {
+        category: 'app',
+        name: 'Lightroom Premium',
+        description: 'Lightroom premium selamanya',
+        price: 'Rp 6.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Lightroom Premium 6k selamanya'
+    },
+    {
+        category: 'app',
+        name: 'Disney+ Premium',
+        description: 'Streaming Disney+ dengan konten eksklusif',
+        price: 'Rp 35.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Disney+ Premium 35k'
+    },
+    {
+        category: 'app',
+        name: 'Netflix Premium',
+        description: 'Akun Netflix premium kualitas terbaik',
+        price: 'Rp 50.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Netflix Premium 50k'
+    },
+    
+    // TAMBAHAN JASA DESIGN
+    {
+        category: 'jasa',
+        name: 'Color Grading',
+        description: 'Jasa color grading untuk video/foto profesional',
+        price: 'Rp 2.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Color Grading 2k'
+    },
+    {
+        category: 'jasa',
+        name: 'Mentahan GFX',
+        description: 'File mentahan untuk design GFX',
+        price: 'Rp 3.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Mentahan GFX 3k'
+    },
+    {
+        category: 'jasa',
+        name: 'Mentahan GFX Manip',
+        description: 'File mentahan GFX manipulation premium',
+        price: 'Rp 7.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Mentahan GFX Manip 7k'
+    },
+    {
+        category: 'jasa',
+        name: 'Mentahan Logo',
+        description: 'File mentahan untuk design logo',
+        price: 'Rp 2.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Mentahan Logo 2k'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid JJ 3D',
+        description: 'Jasa paid editing JJ dengan efek 3D',
+        price: 'Rp 20.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid JJ 3D 20k'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid JJ Biasa',
+        description: 'Jasa paid editing JJ standar',
+        price: 'Rp 10.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid JJ Biasa 10k'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid JJ Pap',
+        description: 'Jasa paid editing JJ pap',
+        price: 'Rp 5.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid JJ Pap 5k'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid VT Tugas',
+        description: 'Jasa paid video tugas per 1 menit',
+        price: 'Rp 15.000 / Menit',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid VT Tugas 15k per menit'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Buat Sound',
+        description: 'Jasa pembuatan sound design profesional',
+        price: 'Mulai 55k',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Buat Sound mulai 55k'
     }
 ];
 

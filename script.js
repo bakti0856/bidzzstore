@@ -1,948 +1,297 @@
-// ========================================
-// GLOBAL VARIABLES
-// ========================================
-const loadingScreen = document.getElementById('loading-screen');
-const mainContent = document.getElementById('main-content');
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-const productsGrid = document.getElementById('productsGrid');
-const filterBtns = document.querySelectorAll('.filter-btn');
-
-// ========================================
-// PRODUCTS DATA - LENGKAP
-// ========================================
-const products = [
-    // APP PREMIUM
-    {
-        category: 'app',
-        name: 'Alight Motion Premium',
-        description: 'Acc Buyer - Akun premium untuk edit video profesional',
-        price: 'Rp 10.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Alight Motion Premium Acc Buyer 10k'
-    },
-    {
-        category: 'app',
-        name: 'Alight Motion Premium',
-        description: 'Acc Generator - Generate akun sendiri',
-        price: 'Rp 5.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Alight Motion Premium Acc Generator 5k'
-    },
-    {
-        category: 'app',
-        name: 'CapCut Pro 35 Day',
-        description: 'Private - 35 hari akses penuh',
-        price: 'Rp 20.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 35 Day Private 20k'
-    },
-    {
-        category: 'app',
-        name: 'CapCut Pro 28 Day',
-        description: 'Private - 28 hari akses penuh',
-        price: 'Rp 17.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 28 Day Private 17k'
-    },
-    {
-        category: 'app',
-        name: 'CapCut Pro 21 Day',
-        description: 'Private - 21 hari akses penuh',
-        price: 'Rp 15.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 21 Day Private 15k'
-    },
-    {
-        category: 'app',
-        name: 'CapCut Pro 14 Day',
-        description: 'Private - 14 hari akses penuh',
-        price: 'Rp 13.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 14 Day Private 13k'
-    },
-    {
-        category: 'app',
-        name: 'CapCut Pro 7 Day',
-        description: 'Private - 7 hari akses penuh',
-        price: 'Rp 9.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 7 Day Private 9k'
-    },
-    {
-        category: 'app',
-        name: 'YouTube Premium',
-        description: 'Via Invite - Tanpa iklan, download offline',
-        price: 'Rp 2.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium Via Invite 2k'
-    },
-    {
-        category: 'app',
-        name: 'Canva Pro',
-        description: 'Via Invite - Akses template & fitur premium',
-        price: 'Rp 3.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro Via Invite 3k'
-    },
-    {
-        category: 'app',
-        name: 'VIU Premium',
-        description: 'Streaming drama Korea tanpa iklan',
-        price: 'Rp 4.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli VIU Premium 4k'
-    },
-    {
-        category: 'app',
-        name: 'Wink Premium 7D',
-        description: 'Acc Seller - 7 hari edit foto AI',
-        price: 'Rp 5.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Wink Premium 7D Acc Seller 5k'
-    },
-    {
-        category: 'app',
-        name: 'Wink Premium 7D',
-        description: 'Acc Buyer - 7 hari edit foto AI',
-        price: 'Rp 7.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Wink Premium 7D Acc Buyer 7k'
-    },
-    
-    // JASA TOP UP & DESIGN
-    {
-        category: 'jasa',
-        name: 'Jasa Suntik All Sosmed',
-        description: 'Suntik followers, likes, views untuk semua sosial media',
-        price: 'Mulai 5k',
-        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Suntik All Sosmed'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Pembuatan Logo',
-        description: 'Design logo profesional custom sesuai keinginan',
-        price: 'Rp 2.000 / Logo',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Pembuatan Logo 2k'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid Watermark',
-        description: 'Hilangkan watermark dari foto/video',
-        price: 'Harga Nego',
-        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Paid Watermark'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid GFX',
-        description: 'Design grafis profesional untuk konten Anda',
-        price: 'Harga Nego',
-        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Paid GFX'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Cover Saldo',
-        description: 'Cover/Edit saldo untuk kebutuhan Anda',
-        price: 'Harga Nego',
-        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Cover Saldo'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Pulsa',
-        description: 'Top up pulsa semua operator dengan harga murah',
-        price: 'Harga Murah',
-        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Pulsa'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Bug',
-        description: 'Jasa bug aplikasi custom per bug',
-        price: 'Rp 4.000 / Bug',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Bug 4k per bug'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Buat Poster',
-        description: 'Design poster custom sesuai kebutuhan Anda',
-        price: 'Tergantung Poster',
-        whatsappText: 'Halo BidzzStore, saya ingin tanya Jasa Buat Poster'
-    },
-    
-    // APK BUG
-    {
-        category: 'apk',
-        name: 'Apk Bug WhatsApp',
-        description: 'Aplikasi bug WhatsApp dengan fitur lengkap',
-        price: 'Rp 10.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Apk Bug WhatsApp 10k'
-    },
-    {
-        category: 'apk',
-        name: 'Apk Bug Telegram',
-        description: 'Aplikasi bug Telegram dengan fitur lengkap',
-        price: 'Rp 10.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Apk Bug Telegram 10k'
-    },
-    {
-        category: 'apk',
-        name: 'Murlog Men',
-        description: 'Aplikasi murlog khusus untuk men',
-        price: 'Rp 2.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Murlog Men 2k'
-    },
-    {
-        category: 'apk',
-        name: 'PT (Premium Tools)',
-        description: 'Tools premium untuk berbagai kebutuhan',
-        price: 'Rp 5.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli PT (Premium Tools) 5k'
-    },
-    {
-        category: 'apk',
-        name: 'OWN',
-        description: 'Aplikasi OWN dengan fitur eksklusif',
-        price: 'Rp 4.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli OWN 4k'
-    },
-    {
-        category: 'apk',
-        name: 'Mursun',
-        description: 'Aplikasi mursun lengkap dan update',
-        price: 'Rp 10.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Mursun 10k'
-    },
-    {
-        category: 'apk',
-        name: 'Apk Bug Input',
-        description: 'Bug input dengan ban dan fitur lainnya',
-        price: 'Rp 12.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Apk Bug Input 12k'
-    },
-    {
-        category: 'apk',
-        name: 'Apk QR Tanpa KTP',
-        description: 'Generate QR tanpa perlu KTP',
-        price: 'Rp 3.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Apk QR Tanpa KTP 3k'
-    },
-    {
-        category: 'apk',
-        name: 'Apk Hyrizz',
-        description: 'Aplikasi Hyrizz dengan berbagai fitur',
-        price: 'Rp 4.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Apk Hyrizz 4k'
-    },
-    
-    // TAMBAHAN APP PREMIUM
-    {
-        category: 'app',
-        name: 'Bulk Alight Motion',
-        description: 'Bulk akun Alight Motion premium',
-        price: 'Mulai 10k',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Bulk Alight Motion mulai 10k'
-    },
-    {
-        category: 'app',
-        name: 'iQIYI Sharing 1 Bulan',
-        description: 'Akun sharing iQIYI premium 1 bulan',
-        price: 'Rp 20.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli iQIYI Sharing 1 Bulan 20k'
-    },
-    {
-        category: 'app',
-        name: 'Duolingo Premium 1 Bulan',
-        description: 'Akses premium Duolingo untuk belajar bahasa',
-        price: 'Mulai 10k',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Duolingo Premium 1 Bulan mulai 10k'
-    },
-    {
-        category: 'app',
-        name: 'Lightroom Premium',
-        description: 'Lightroom premium selamanya',
-        price: 'Rp 6.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Lightroom Premium 6k selamanya'
-    },
-    {
-        category: 'app',
-        name: 'Disney+ Premium',
-        description: 'Streaming Disney+ dengan konten eksklusif',
-        price: 'Rp 35.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Disney+ Premium 35k'
-    },
-    {
-        category: 'app',
-        name: 'Netflix Premium',
-        description: 'Akun Netflix premium kualitas terbaik',
-        price: 'Rp 50.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Netflix Premium 50k'
-    },
-    
-    // TAMBAHAN JASA DESIGN
-    {
-        category: 'jasa',
-        name: 'Color Grading',
-        description: 'Jasa color grading untuk video/foto profesional',
-        price: 'Rp 2.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Color Grading 2k'
-    },
-    {
-        category: 'jasa',
-        name: 'Mentahan GFX',
-        description: 'File mentahan untuk design GFX',
-        price: 'Rp 3.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Mentahan GFX 3k'
-    },
-    {
-        category: 'jasa',
-        name: 'Mentahan GFX Manip',
-        description: 'File mentahan GFX manipulation premium',
-        price: 'Rp 7.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Mentahan GFX Manip 7k'
-    },
-    {
-        category: 'jasa',
-        name: 'Mentahan Logo',
-        description: 'File mentahan untuk design logo',
-        price: 'Rp 2.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Mentahan Logo 2k'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid JJ 3D',
-        description: 'Jasa paid editing JJ dengan efek 3D',
-        price: 'Rp 20.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid JJ 3D 20k'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid JJ Biasa',
-        description: 'Jasa paid editing JJ standar',
-        price: 'Rp 10.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid JJ Biasa 10k'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid JJ Pap',
-        description: 'Jasa paid editing JJ pap',
-        price: 'Rp 5.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid JJ Pap 5k'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid VT Tugas',
-        description: 'Jasa paid video tugas per 1 menit',
-        price: 'Rp 15.000 / Menit',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid VT Tugas 15k per menit'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Buat Sound',
-        description: 'Jasa pembuatan sound design profesional',
-        price: 'Mulai 55k',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Buat Sound mulai 55k'
-    },
-    
-    // JASA PAID TAMBAHAN
-    {
-        category: 'jasa',
-        name: 'Jasa Paid WM Ready',
-        description: 'Watermark ready langsung pakai, proses cepat',
-        price: 'Rp 15.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid WM Ready 15k'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid WM Custom',
-        description: 'Watermark custom sesuai request Anda',
-        price: 'Rp 25.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid WM Custom 25k'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid GFX',
-        description: 'Design GFX profesional untuk konten',
-        price: 'Rp 16.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid GFX 16k'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid GFX Manip Bergerak',
-        description: 'GFX manipulation dengan efek motion/bergerak',
-        price: 'Rp 40.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid GFX Manip Bergerak 40k'
-    },
-    {
-        category: 'jasa',
-        name: 'Pulsa All Operator',
-        description: 'Top up pulsa semua operator (Telkomsel, XL, Indosat, dll)',
-        price: 'Tergantung Operator',
-        whatsappText: 'Halo BidzzStore, saya ingin top up pulsa'
-    },
-    {
-        category: 'jasa',
-        name: 'Jasa Paid Poster',
-        description: 'Design poster profesional sesuai kebutuhan',
-        price: 'Rp 10.000',
-        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid Poster 10k'
-    },
-    {
-        category: 'jasa',
-        name: 'Sewa Bot WhatsApp',
-        description: 'Bot WA untuk auto reply & broadcast per bulan',
-        price: 'Rp 15.000 / Bulan',
-        whatsappText: 'Halo BidzzStore, saya ingin sewa Bot WhatsApp 15k/bulan'
-    },
-    
-    // APP PREMIUM - ALIGHT MOTION
-    {
-        category: 'app',
-        name: 'Alight Motion Sharing',
-        description: 'AM Premium sharing - Akses murah meriah',
-        price: 'Rp 2.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Alight Motion Sharing 2k'
-    },
-    
-    // APP PREMIUM - CAPCUT EXTENDED
-    {
-        category: 'app',
-        name: 'CapCut Pro 6 Bulan',
-        description: 'CapCut Premium 6 bulan akses penuh',
-        price: 'Rp 35.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 6 Bulan 35k'
-    },
-    {
-        category: 'app',
-        name: 'CapCut Pro 1 Tahun',
-        description: 'CapCut Premium 1 tahun full akses',
-        price: 'Rp 70.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 1 Tahun 70k'
-    },
-    
-    // YOUTUBE PREMIUM VARIANTS
-    {
-        category: 'app',
-        name: 'YouTube Premium 1 Bulan',
-        description: 'YT Premium 1 bulan tanpa iklan',
-        price: 'Rp 2.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 1 Bulan 2k'
-    },
-    {
-        category: 'app',
-        name: 'YouTube Premium 2 Bulan',
-        description: 'YT Premium 2 bulan tanpa iklan',
-        price: 'Rp 4.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 2 Bulan 4k'
-    },
-    {
-        category: 'app',
-        name: 'YouTube Premium 3 Bulan',
-        description: 'YT Premium 3 bulan tanpa iklan',
-        price: 'Rp 6.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 3 Bulan 6k'
-    },
-    {
-        category: 'app',
-        name: 'YouTube Premium 4 Bulan',
-        description: 'YT Premium 4 bulan tanpa iklan',
-        price: 'Rp 8.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 4 Bulan 8k'
-    },
-    {
-        category: 'app',
-        name: 'YouTube Premium 5 Bulan',
-        description: 'YT Premium 5 bulan tanpa iklan',
-        price: 'Rp 12.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 5 Bulan 12k'
-    },
-    
-    // SPOTIFY FAMILY PLAN
-    {
-        category: 'app',
-        name: 'Spotify Famplan 1 Bulan Full Garansi',
-        description: 'Family plan 1 bulan dengan garansi penuh',
-        price: 'Rp 16.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Famplan 1 Bulan Full Garansi 16k'
-    },
-    {
-        category: 'app',
-        name: 'Spotify Famplan 1 Bulan Gar 7H',
-        description: 'Family plan 1 bulan garansi 7 hari',
-        price: 'Rp 10.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Famplan 1 Bulan Gar 7H 10k'
-    },
-    {
-        category: 'app',
-        name: 'Spotify Famplan 1 Bulan Gar 3H',
-        description: 'Family plan 1 bulan garansi 3 hari',
-        price: 'Rp 4.700',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Famplan 1 Bulan Gar 3H 4.7k'
-    },
-    {
-        category: 'app',
-        name: 'Spotify Famplan 2 Bulan Full Garansi',
-        description: 'Family plan 2 bulan dengan garansi penuh',
-        price: 'Rp 26.500',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Famplan 2 Bulan Full Garansi 26.5k'
-    },
-    
-    // SPOTIFY INDIVIDUAL PLAN
-    {
-        category: 'app',
-        name: 'Spotify Indplan 1 Bulan No Garansi',
-        description: 'Individual plan 1 bulan tanpa garansi',
-        price: 'Rp 9.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Indplan 1 Bulan No Garansi 9k'
-    },
-    {
-        category: 'app',
-        name: 'Spotify Indplan 1 Bulan Full Garansi',
-        description: 'Individual plan 1 bulan dengan garansi penuh',
-        price: 'Rp 17.700',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Indplan 1 Bulan Full Garansi 17.7k'
-    },
-    
-    // CANVA PRO VARIANTS
-    {
-        category: 'app',
-        name: 'Canva Pro 1 Bulan',
-        description: 'Canva Pro akses 1 bulan',
-        price: 'Rp 1.500',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro 1 Bulan 1.5k'
-    },
-    {
-        category: 'app',
-        name: 'Canva Pro 2 Bulan',
-        description: 'Canva Pro akses 2 bulan',
-        price: 'Rp 2.500',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro 2 Bulan 2.5k'
-    },
-    {
-        category: 'app',
-        name: 'Canva Pro 3 Bulan',
-        description: 'Canva Pro akses 3 bulan',
-        price: 'Rp 3.500',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro 3 Bulan 3.5k'
-    },
-    {
-        category: 'app',
-        name: 'Canva Pro 1 Tahun',
-        description: 'Canva Pro akses 1 tahun penuh',
-        price: 'Rp 5.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro 1 Tahun 5k'
-    },
-    {
-        category: 'app',
-        name: 'Canva Pro Designer',
-        description: 'Canva Pro + Designer fitur tambahan (+3K dari harga dasar)',
-        price: 'Mulai 4.500',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro Designer'
-    },
-    {
-        category: 'app',
-        name: 'Canva Lifetime EDU',
-        description: 'Canva akses selamanya dengan akun EDU',
-        price: 'Rp 10.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Lifetime EDU 10k'
-    },
-    {
-        category: 'app',
-        name: 'Canva Admin 30 Hari',
-        description: 'Canva Admin 30 hari - Bisa invite 30 orang, Garansi 7 hari',
-        price: 'Rp 7.000',
-        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Admin 30 Hari 7k'
-    }
-];
-
-// ========================================
-// MONEY PARTICLES EFFECT
-// ========================================
-function createMoneyParticle() {
-    const particle = document.createElement('div');
-    const symbols = ['💰', '💵', '💴', '💶', '💷', '💳', '🪙', '💸', '💎'];
-    const symbol = symbols[Math.floor(Math.random() * symbols.length)];
-    
-    particle.textContent = symbol;
-    particle.style.cssText = `
-        position: fixed;
-        font-size: ${15 + Math.random() * 15}px;
-        pointer-events: none;
-        z-index: 9998;
-        left: ${Math.random() * window.innerWidth}px;
-        top: -30px;
-        opacity: 0.7;
-        animation: fall-money ${3 + Math.random() * 4}s linear;
-    `;
-    
-    document.body.appendChild(particle);
-    
-    setTimeout(() => {
-        particle.remove();
-    }, 7000);
-}
-
-// Add CSS animation for money particles
-const moneyStyle = document.createElement('style');
-moneyStyle.textContent = `
-    @keyframes fall-money {
-        to {
-            transform: translateY(${window.innerHeight + 50}px) rotate(${360 + Math.random() * 360}deg);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(moneyStyle);
-
-// ========================================
-// TECH PARTICLES
-// ========================================
-function createTechParticle() {
-    const particle = document.createElement('div');
-    const colors = ['#ff6600', '#00d4ff', '#ffcc00'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    
-    particle.style.cssText = `
-        position: fixed;
-        width: ${2 + Math.random() * 2}px;
-        height: ${2 + Math.random() * 2}px;
-        background: ${color};
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 1;
-        left: ${Math.random() * window.innerWidth}px;
-        top: -10px;
-        box-shadow: 0 0 10px ${color};
-        animation: fall ${3 + Math.random() * 3}s linear;
-    `;
-    
-    document.body.appendChild(particle);
-    
-    setTimeout(() => {
-        particle.remove();
-    }, 6000);
-}
-
-const techStyle = document.createElement('style');
-techStyle.textContent = `
-    @keyframes fall {
-        to {
-            transform: translateY(${window.innerHeight}px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(techStyle);
-
-// ========================================
-// LOADING ANIMATION WITH MONEY RAIN
-// ========================================
-let moneyInterval;
-let techInterval;
-
-window.addEventListener('load', () => {
-    // Money rain during loading
-    moneyInterval = setInterval(createMoneyParticle, 150);
-    
-    setTimeout(() => {
-        clearInterval(moneyInterval);
-        loadingScreen.style.opacity = '0';
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-            mainContent.classList.remove('hidden');
-            document.body.style.overflow = 'auto';
-            
-            // Start tech particles after loading
-            techInterval = setInterval(createTechParticle, 300);
-        }, 500);
-    }, 2500);
-});
-
-// ========================================
-// CURSOR GLOW EFFECT (Desktop)
-// ========================================
-if (window.innerWidth > 768) {
-    let lastTime = 0;
-    const throttleDelay = 50;
-    
-    document.addEventListener('mousemove', (e) => {
-        const currentTime = Date.now();
-        if (currentTime - lastTime < throttleDelay) return;
-        lastTime = currentTime;
-        
-        const cursorGlow = document.createElement('div');
-        cursorGlow.style.cssText = `
-            position: fixed;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 102, 0, 0.15), transparent 70%);
-            pointer-events: none;
-            z-index: 9997;
-            transform: translate(-50%, -50%);
-            left: ${e.clientX}px;
-            top: ${e.clientY}px;
-            transition: opacity 0.3s ease;
-        `;
-        
-        document.body.appendChild(cursorGlow);
-        
-        setTimeout(() => {
-            cursorGlow.style.opacity = '0';
-            setTimeout(() => {
-                cursorGlow.remove();
-            }, 300);
-        }, 100);
-    });
-}
-
-// ========================================
-// MOBILE NAVIGATION
-// ========================================
-navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
-
-// ========================================
-// SMOOTH SCROLLING
-// ========================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 70;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ========================================
-// ACTIVE NAVIGATION
-// ========================================
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollPosition = window.scrollY + 100;
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-});
-
-// ========================================
-// GLITCH EFFECT
-// ========================================
-let glitchInterval;
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        clearInterval(glitchInterval);
-    } else {
-        if (!glitchInterval) {
-            glitchInterval = setInterval(() => {
-                const heroTitle = document.querySelector('.hero-title');
-                if (heroTitle && Math.random() > 0.95) {
-                    heroTitle.style.textShadow = `
-                        ${Math.random() * 5 - 2.5}px 0 #00d4ff,
-                        ${Math.random() * 5 - 2.5}px 0 #ff6600
-                    `;
-                    setTimeout(() => {
-                        heroTitle.style.textShadow = 'none';
-                    }, 50);
-                }
-            }, 100);
-        }
-    }
-});
-
-// ========================================
-// RENDER PRODUCTS
-// ========================================
-function renderProducts(filter = 'all') {
-    productsGrid.innerHTML = '';
-    
-    const filteredProducts = filter === 'all' 
-        ? products 
-        : products.filter(p => p.category === filter);
-    
-    filteredProducts.forEach((product, index) => {
-        const whatsappNumber = '6289660770777';
-        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(product.whatsappText)}`;
-        
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.style.animationDelay = `${index * 0.05}s`;
-        
-        const categoryName = {
-            'app': '📱 App Premium',
-            'jasa': '⚙️ Jasa',
-            'apk': '🔧 Apk Bug'
-        }[product.category];
-        
-        productCard.innerHTML = `
-            <div class="product-category">${categoryName}</div>
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <div class="product-price">${product.price}</div>
-            <a href="${whatsappLink}" target="_blank" class="buy-button">
-                <span>💬 ORDER NOW</span>
-            </a>
-        `;
-        
-        // Mouse glow effect on card
-        productCard.addEventListener('mousemove', (e) => {
-            const rect = productCard.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            productCard.style.setProperty('--x', `${x}%`);
-            productCard.style.setProperty('--y', `${y}%`);
-        });
-        
-        productsGrid.appendChild(productCard);
-    });
-}
-
-// ========================================
-// CATEGORY FILTER
-// ========================================
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const category = btn.getAttribute('data-category');
-        renderProducts(category);
-    });
-});
-
-// ========================================
-// SCROLL ANIMATIONS
-// ========================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+const Core = {
+    data: { 
+        prods:[], rips:[], leads:[], cart:[], orders:[], history:[], 
+        cats:["Top Up","App Prem","Nokos"], 
+        vous:[{c:"MAX",v:5000}], 
+        sets:{
+            name:"MaxShop", title:"MaxShop OS", slogan:"Digital Store", 
+            color:"#ffffff", wa:"62895393870131", wacs:"62895393870131", group:"", banner:"",
+            foot:"&copy; 2026 MaxShop", info:"Selamat Datang", gar:"Aman 100%", lic:"Official License",
+            soc:{fb:"", ig:"", tt:"", yt:""}
+        }, 
+        auth:{u:"admin", p:"admin123"} 
+    },
+    init() {
+        try {
+            const s = localStorage.getItem('max_os_v1_02');
+            if(s) this.data = JSON.parse(s);
+            else {
+                const t = localStorage.getItem('max_os_v1') || localStorage.getItem('max_os_v1_01');
+                if(t) this.data = Object.assign(this.data, JSON.parse(t));
+                // Clean old maintenance data if exists
+                if(this.data.sets.maintenance !== undefined) delete this.data.sets.maintenance;
+                this.save();
+            }
+        } catch(e){ console.log("DB Init"); this.save(); }
+    },
+    save() { localStorage.setItem('max_os_v1_02', JSON.stringify(this.data)); },
+    reset() { if(confirm("Reset Total?")) { localStorage.clear(); location.reload(); } },
+    fmt: (n) => "Rp "+parseInt(n).toLocaleString('id-ID'),
+    dt: () => { const d=new Date(); return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`; }
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+const Utils = {
+    compress: (f) => new Promise(r => { const d=new FileReader(); d.readAsDataURL(f); d.onload=e=>{ const i=new Image(); i.src=e.target.result; i.onload=()=>{ const c=document.createElement('canvas'); const x=c.getContext('2d'); const s=720/Math.max(i.width,i.height); c.width=i.width*(s<1?s:1); c.height=i.height*(s<1?s:1); x.drawImage(i,0,0,c.width,c.height); r(c.toDataURL('image/jpeg',0.6)); } } }),
+    toast: (m, t='success') => { const d=document.createElement('div'); d.className='toast'; d.style.borderLeftColor=t==='error'?'red':'var(--primary)'; d.innerHTML=m; document.getElementById('toast-box').appendChild(d); setTimeout(()=>d.remove(),3000); },
+    copy: (t) => { navigator.clipboard.writeText(t); Utils.toast("Kode Disalin!"); }
+};
+
+const Format = {
+    buy(p, pay, vCode, vDisc) {
+        const idT = "TX" + Date.now().toString().slice(-6);
+        const total = p.price - vDisc;
+        let m = `*─── [ PESANAN BARU ] ───*\n\n`;
+        m += `🆔 ID: ${idT}\n⌚ Waktu: ${Core.dt()}\n📦 Produk: ${p.name}\n💳 Pay: ${pay}\n`;
+        if(vCode) m += `🎫 Voucher: ${vCode} (-${Core.fmt(vDisc)})\n`;
+        m += `💰 *TOTAL: ${Core.fmt(total)}*\n\n`;
+        m += `*INFO CS:* ${Core.data.sets.group || 'Hubungi Admin'}\n`;
+        m += `--------------------------\n_Mohon proses pesanan ini_`;
+        return encodeURIComponent(m);
+    },
+    kritik() {
+        return encodeURIComponent(`*─── [ KRITIK & SARAN ] ───*\nHalo Admin, saya ingin menyampaikan:\n\n(Isi pesan Anda)`);
+    }
+};
+
+let tempP=[], tempR=[], tempH=[], curId=null, disc=0;
+
+const App = {
+    start() {
+        Core.init();
+        setTimeout(()=>{document.getElementById('loader').style.display='none'},1000);
+        this.apply(); this.home(); this.ord(); this.lead();
+        setTimeout(()=>{document.getElementById('resetBtn').style.display='block'},3000);
+    },
+    apply() {
+        const s=Core.data.sets;
+        document.documentElement.style.setProperty('--primary', s.color);
+        document.getElementById('navTitle').innerText=s.name;
+        document.getElementById('heroT').innerText=s.name;
+        document.getElementById('heroD').innerText=s.slogan;
+        document.getElementById('fText').innerHTML=s.foot;
+        document.getElementById('fabWa').href=`https://wa.me/${s.wa}`;
+        document.getElementById('accInfoText').innerText=s.info;
+        if(s.banner) document.getElementById('heroBanner').style.backgroundImage = `url('${s.banner}')`;
+        if(s.info) document.getElementById('accInfoBox').style.display='block';
+        document.getElementById('webTitle').innerText = s.title;
+        
+        document.getElementById('fFb').href = s.soc.fb || "#";
+        document.getElementById('fIg').href = s.soc.ig || "#";
+        document.getElementById('fTt').href = s.soc.tt || "#";
+        document.getElementById('fYt').href = s.soc.yt || "#";
+
+        document.getElementById('sTitle').value=s.title;
+        document.getElementById('sName').value=s.name; document.getElementById('sSlogan').value=s.slogan;
+        document.getElementById('sBanner').value=s.banner||"";
+        document.getElementById('sFoot').value=s.foot; document.getElementById('sColor').value=s.color;
+        document.getElementById('sWa').value=s.wa; document.getElementById('sWaCs').value=s.wacs;
+        document.getElementById('sGroup').value=s.group; document.getElementById('sInfo').value=s.info;
+        document.getElementById('sFb').value=s.soc.fb; document.getElementById('sIg').value=s.soc.ig;
+        document.getElementById('sTt').value=s.soc.tt; document.getElementById('sYt').value=s.soc.yt;
+    },
+    home(cat='all') {
+        const cf=document.getElementById('catList'); cf.innerHTML=`<div class="chip ${cat==='all'?'active':''}" onclick="App.home('all')">All</div>`;
+        Core.data.cats.forEach(c=>cf.innerHTML+=`<div class="chip ${cat===c?'active':''}" onclick="App.home('${c}')">${c}</div>`);
+        const g=document.getElementById('prodGrid'); g.innerHTML='';
+        const l=cat==='all'?Core.data.prods:Core.data.prods.filter(x=>x.cat===cat);
+        if(l.length === 0) g.innerHTML = `<div class="text-c text-m" style="grid-column:1/-1;padding:20px">Belum ada produk.</div>`;
+        l.forEach(p=>{
+            const img=p.imgs[0]||'';
+            if(p.stock>0 || p.sold) {
+                g.innerHTML+=`<div class="card" onclick="App.det(${p.id})">
+                    <div class="card-img-box"><img src="${img}" class="card-img"><div class="card-badge">${p.cat}</div>${p.sold?'<div class="badge-sold">TERJUAL</div>':''}</div>
+                    <div class="card-body"><div class="card-title">${p.name}</div><div class="card-price">${Core.fmt(p.price)}</div></div>
+                </div>`;
+            }
+        });
+        document.getElementById('cartBadge').innerText=Core.data.cart.length;
+    },
+    det(id) {
+        curId=id; const p=Core.data.prods.find(x=>x.id===id); if(!p)return;
+        const s=document.getElementById('detSlider'); s.innerHTML='';
+        p.imgs.forEach(i=>s.innerHTML+=`<div class="slide"><img src="${i}"></div>`);
+        document.getElementById('detName').innerText=p.name;
+        document.getElementById('detPrice').innerText=Core.fmt(p.price);
+        document.getElementById('detCat').innerText=p.cat;
+        document.getElementById('detDesc').innerText=p.desc;
+        document.getElementById('detStock').innerText=p.stock;
+        
+        document.getElementById('detVou').value = ''; disc = 0; 
+
+        const btn=document.getElementById('btnBuyWa');
+        if(p.sold||p.stock<1){ btn.innerText="HABIS"; btn.style.background="#333"; btn.disabled=true; }
+        else {
+            btn.innerText="BELI WA"; btn.style.background="var(--primary)"; btn.disabled=false;
+            btn.onclick=()=>{
+                const pay=document.getElementById('detPay').value;
+                const vCode = document.getElementById('detVou').value;
+                window.open(`https://wa.me/${Core.data.sets.wa}?text=${Format.buy(p, pay, vCode, disc)}`,'_blank');
+            }
         }
-    });
-}, observerOptions);
+        Modal.open('modalDetail');
+    },
+    checkVou() {
+        const code = document.getElementById('detVou').value;
+        const v = Core.data.vous.find(x => x.c === code);
+        if(v) { disc = v.v; Utils.toast(`Hemat ${Core.fmt(v.v)}`); }
+        else { disc = 0; Utils.toast("Invalid", "error"); }
+    },
+    renderVou() {
+        const d=document.getElementById('pubVouList'); d.innerHTML='';
+        Core.data.vous.forEach(v=>{ d.innerHTML+=`<div class="card" style="padding:15px;text-align:center;border:1px dashed gold;color:gold;margin-bottom:10px"><b>${v.c}</b><br>Disc ${Core.fmt(v.v)}<br><small style="color:#888;cursor:pointer" onclick="Utils.copy('${v.c}')">Salin</small></div>`; });
+    },
+    ord(){
+        const c=document.getElementById('orderList'); c.innerHTML='';
+        const all = [...Core.data.orders, ...(Core.data.history||[])].sort((a,b)=>b.id.localeCompare(a.id));
+        if(all.length === 0) c.innerHTML = `<div class="text-c text-m" style="padding:20px">Belum ada riwayat.</div>`;
+        all.forEach(o=>{
+            let h = `<div style="background:#1a1a1a;padding:15px;border-radius:12px;border:var(--border);margin-bottom:10px"><div class="between flex"><b>${o.buyer||'User'}</b><small class="text-m">${o.date}</small></div><hr style="border:0;border-top:1px solid #333;margin:5px 0"><p class="text-p">${o.items||'Manual'}</p><div class="between flex mt-2"><span>Total</span><b class="text-g">${Core.fmt(o.total)}</b></div>`;
+            if(o.ss) h += `<div style="margin-top:10px;text-align:center"><img src="${o.ss}" style="max-height:100px;border-radius:4px"></div>`;
+            h += `</div>`; c.innerHTML += h;
+        });
+    },
+    lead(){
+        const b=document.getElementById('leadTable'); b.innerHTML='';
+        Core.data.leads.forEach((l,i)=>b.innerHTML+=`<tr style="border-bottom:1px solid #222"><td style="padding:12px;font-family:'Rajdhani';font-size:1.2rem;color:var(--primary)">#${i+1}</td><td>${l.name}</td><td style="text-align:right;padding-right:10px;color:var(--gold)">${l.total}</td></tr>`);
+    },
+    search(v){
+        const l=Core.data.prods.filter(x=>x.name.toLowerCase().includes(v.toLowerCase()));
+        const g=document.getElementById('prodGrid'); g.innerHTML='';
+        l.forEach(p=>{ g.innerHTML+=`<div class="card" onclick="App.det(${p.id})"><div class="card-img-box"><img src="${p.imgs[0]}" class="card-img"></div><div class="card-body"><div class="card-title">${p.name}</div><div class="card-price">${Core.fmt(p.price)}</div></div></div>`; });
+    },
+    cs(){ window.open(`https://wa.me/${Core.data.sets.wacs}?text=Halo%20Admin%20MaxShop`, '_blank'); },
+    kritik() { window.open(`https://wa.me/${Core.data.sets.wacs}?text=${Format.kritik()}`, '_blank'); }
+};
 
-function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.product-card, .contact-card, .wa-btn');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease';
-        observer.observe(el);
-    });
-}
-
-// ========================================
-// PARALLAX EFFECT
-// ========================================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroContent = document.querySelector('.hero-content');
-    
-    if (heroContent && scrolled < window.innerHeight) {
-        const speed = 0.5;
-        heroContent.style.transform = `translateY(${scrolled * speed}px)`;
+const Nav = {
+    to(id, el) {
+        window.scrollTo(0,0);
+        document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
+        document.getElementById('p-'+id).classList.add('active');
+        if(el) { document.querySelectorAll('.d-link').forEach(e=>e.classList.remove('active')); el.classList.add('active'); }
+        if(window.innerWidth < 768) { document.querySelectorAll('.nav-item').forEach(e=>e.classList.remove('active')); }
     }
-});
+};
 
-// ========================================
-// NAVBAR SCROLL EFFECT
-// ========================================
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 10, 15, 0.98)';
-        navbar.style.boxShadow = '0 5px 20px rgba(255, 102, 0, 0.3)';
-    } else {
-        navbar.style.background = 'rgba(10, 10, 15, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-});
-
-// ========================================
-// BUTTON RIPPLE EFFECT
-// ========================================
-document.addEventListener('click', (e) => {
-    if (e.target.closest('.buy-button, .cta-button, .contact-button, .wa-btn')) {
-        const button = e.target.closest('.buy-button, .cta-button, .contact-button, .wa-btn');
-        const ripple = document.createElement('span');
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            left: ${x}px;
-            top: ${y}px;
-            transform: scale(0);
-            animation: ripple-effect 0.6s ease-out;
-            pointer-events: none;
-        `;
-        
-        button.style.position = 'relative';
-        button.style.overflow = 'hidden';
-        button.appendChild(ripple);
-        
-        setTimeout(() => ripple.remove(), 600);
-    }
-});
-
-const rippleStyle = document.createElement('style');
-rippleStyle.textContent = `
-    @keyframes ripple-effect {
-        to {
-            transform: scale(2.5);
-            opacity: 0;
+const Modal = {
+    open(id) { 
+        const el = document.getElementById(id);
+        if(el) {
+            el.style.display = 'flex'; 
+            if(id==='modalCart') Cart.render();
+            if(id==='modalVou') App.renderVou();
+            if(id==='modalInfo') document.getElementById('iCon').innerText=`GARANSI:\n${Core.data.sets.gar}\n\nLIC:\n${Core.data.sets.lic}`;
         }
+    },
+    close(id) { 
+        const el = document.getElementById(id);
+        if(el) { el.style.display = 'none'; }
     }
-`;
-document.head.appendChild(rippleStyle);
+};
 
-// ========================================
-// INITIALIZE
-// ========================================
-document.addEventListener('DOMContentLoaded', () => {
-    renderProducts('all');
-    setTimeout(initScrollAnimations, 100);
-});
-
-// ========================================
-// PERFORMANCE OPTIMIZATION
-// ========================================
-if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
-    // Reduce particle frequency on low-end devices
-    if (techInterval) {
-        clearInterval(techInterval);
-        techInterval = setInterval(createTechParticle, 600);
+const Auth = {
+    login() {
+        if(document.getElementById('u').value===Core.data.auth.u && document.getElementById('p').value===Core.data.auth.p) {
+            Modal.close('modalLogin'); 
+            setTimeout(() => Admin.open(), 300);
+        } else Utils.toast('Login Gagal!','error');
     }
-}
+};
 
-// ========================================
-// CONSOLE MESSAGE
-// ========================================
-console.log('%c💰 BIDZZSTORE 💰', 'color: #ff6600; font-size: 24px; font-weight: bold;');
-console.log('%cKebutuhan Digital Lengkap', 'color: #00d4ff; font-size: 14px;');
-console.log('%cWA: 0896-6077-0777', 'color: #ffcc00; font-size: 12px;');
-console.log('%cIG: @bidzz_railway | TT: @garamdanlemon', 'color: #a0a0b0; font-size: 11px;');
+const Cart = {
+    add() {
+        const p=Core.data.prods.find(x=>x.id===curId);
+        if(p&&p.stock>0){ Core.data.cart.push(p); Core.save(); App.render(); Utils.toast('Masuk Keranjang'); Cart.upd(); }
+    },
+    del(i) { Core.data.cart.splice(i,1); Core.save(); this.upd(); this.render(); },
+    upd() { document.getElementById('cartBadge').innerText=Core.data.cart.length; },
+    render() {
+        const l=document.getElementById('cartList'); l.innerHTML=''; let t=0;
+        Core.data.cart.forEach((p,i)=>{ t+=p.price; l.innerHTML+=`<div class="between flex" style="background:#1a1a1a;padding:10px;border-radius:8px"><span>${p.name}<br><small class="text-p">${Core.fmt(p.price)}</small></span><i class="fa-solid fa-trash text-d" onclick="Cart.del(${i})"></i></div>`; });
+        document.getElementById('cTotal').innerText=Core.fmt(t-disc);
+    },
+    apply() {
+        const v=Core.data.vous.find(x=>x.c===document.getElementById('vIn').value);
+        if(v){disc=v.v;this.render();Utils.toast("Voucher OK");}else Utils.toast("Salah","error");
+    },
+    cout() {
+        if(Core.data.cart.length===0) return;
+        const id="T"+Date.now().toString().slice(-5);
+        let m=`🧾 *ORDER CART*\nID: ${id}\nPay: ${document.getElementById('cartPay').value}\n\n`; let t=0;
+        Core.data.cart.forEach(x=>{ m+=`- ${x.name} (${Core.fmt(x.price)})\n`; t+=x.price; });
+        m+=`\nTotal: ${Core.fmt(t-disc)}`;
+        Core.data.orders.unshift({id:id, buyer:'Saya', date:Core.dt(), items:`${Core.data.cart.length} Items`, total:t-disc});
+        Core.data.cart=[]; disc=0; Core.save(); Cart.upd(); Modal.close('modalCart'); App.home(); App.ord();
+        window.open(`https://wa.me/${Core.data.sets.wa}?text=${encodeURIComponent(m)}`,'_blank');
+    }
+};
+
+const Admin = {
+    open() { 
+        document.getElementById('admin-layer').style.display = 'flex'; 
+        this.view('home'); 
+        this.render(); 
+    },
+    close() { document.getElementById('admin-layer').style.display = 'none'; },
+    view(id) {
+        document.querySelectorAll('.adm-page').forEach(e=>e.classList.remove('active'));
+        const el = document.getElementById('adm-'+id);
+        if(el) el.classList.add('active'); 
+        if(id==='list') this.list(); if(id==='lead') this.lead(); if(id==='hist') this.loadH();
+    },
+    back() { this.view('home'); },
+    async proc(inp,t) {
+        const btn=document.getElementById('btnPost'); if(btn)btn.innerText="COMPRESS...";
+        const arr=[]; for(let f of inp.files) arr.push(await Utils.compress(f));
+        if(t==='prod') { tempP=[...tempP,...arr]; this.grid('upGrid',tempP,'prod'); }
+        if(t==='hist') { tempH=[...tempH,...arr]; this.grid('upGridH',tempH,'hist'); }
+        if(t==='rip') { tempR=[...tempR,...arr]; this.grid('upGridR',tempR,'rip'); }
+        if(btn)btn.innerText="POSTING";
+    },
+    grid(id,arr,t) {
+        const g=document.getElementById(id); const btn=g.querySelector('.up-box'); g.innerHTML=''; g.appendChild(btn);
+        arr.forEach((x,i)=>{ g.innerHTML+=`<div style="aspect-ratio:1;background:url(${x}) center/cover;border-radius:8px;position:relative"><div onclick="Admin.delI('${t}',${i})" style="position:absolute;top:2px;right:2px;background:red;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer">X</div></div>`; });
+    },
+    delI(t,i){ 
+        if(t==='prod'){ tempP.splice(i,1);this.grid('upGrid',tempP,'prod'); }
+        if(t==='hist'){ tempH.splice(i,1);this.grid('upGridH',tempH,'hist'); }
+        if(t==='rip'){ tempR.splice(i,1);this.grid('upGridR',tempR,'rip'); }
+    },
+    render() {
+        const s=document.getElementById('pCat'); s.innerHTML=''; const c=document.getElementById('admCatList'); c.innerHTML='';
+        Core.data.cats.forEach((x,i)=>{ s.innerHTML+=`<option value="${x}">${x}</option>`; c.innerHTML+=`<div class="chip" style="font-size:0.8rem">${x} <span style="color:red;cursor:pointer" onclick="Admin.delC(${i})">x</span></div>`; });
+        const v=document.getElementById('admVouList'); v.innerHTML='';
+        Core.data.vous.forEach((x,i)=>{ v.innerHTML+=`<div class="between flex" style="background:#222;padding:5px 10px;border-radius:4px"><span>${x.c} - ${Core.fmt(x.v)}</span><span style="color:red;cursor:pointer" onclick="Admin.delV(${i})">x</span></div>`; });
+        document.getElementById('stProd').innerText=Core.data.prods.length;
+        document.getElementById('stOrd').innerText=Core.data.orders.length;
+    },
+    addP() {
+        Core.data.prods.unshift({ id:Date.now(), name:document.getElementById('pName').value, cat:document.getElementById('pCat').value, price:parseInt(document.getElementById('pPrice').value), stock:parseInt(document.getElementById('pStock').value), desc:document.getElementById('pDesc').value, imgs:[...tempP], sold:false });
+        Core.save(); Utils.toast("Sukses"); tempP=[]; this.grid('upGrid',[],'prod'); this.view('list'); App.home();
+    },
+    list(){ const c=document.getElementById('admListP'); c.innerHTML=''; Core.data.prods.forEach(p=>{ c.innerHTML+=`<div class="between flex" style="background:#222;padding:10px;border-radius:8px"><span>${p.name} <small>(${p.stock})</small></span><div><button class="btn-s btn-sm" onclick="Admin.tog(${p.id})">STOK</button> <button class="btn-d btn-sm" onclick="Admin.del(${p.id})">DEL</button></div></div>`; }); },
+    tog(id){ const p=Core.data.prods.find(x=>x.id===id); p.stock=p.stock>0?0:1; p.sold=p.stock<=0; Core.save(); this.list(); App.home(); },
+    del(id){ if(confirm('Del?')){Core.data.prods=Core.data.prods.filter(x=>x.id!==id);Core.save();this.list();App.home()} },
+    save(){ 
+        const s=Core.data.sets; 
+        s.title=document.getElementById('sTitle').value; s.name=document.getElementById('sName').value; s.slogan=document.getElementById('sSlogan').value; s.banner=document.getElementById('sBanner').value;
+        s.foot=document.getElementById('sFoot').value; s.color=document.getElementById('sColor').value;
+        s.wa=document.getElementById('sWa').value; s.wacs=document.getElementById('sWaCs').value; s.group=document.getElementById('sGroup').value; s.info=document.getElementById('sInfo').value;
+        s.soc.fb=document.getElementById('sFb').value; s.soc.ig=document.getElementById('sIg').value; s.soc.tt=document.getElementById('sTt').value; s.soc.yt=document.getElementById('sYt').value;
+        Core.save(); App.apply(); Utils.toast("Saved");
+    },
+    changePass() { const o=document.getElementById('oldPass').value; const n=document.getElementById('newPass').value; if(o===Core.data.auth.p && n){ Core.data.auth.p=n; Core.save(); Utils.toast("Pass Updated"); } else Utils.toast("Gagal","error"); },
+    addH() {
+        const nm = document.getElementById('hName').value; const tt = document.getElementById('hTotal').value;
+        if(nm && tt) {
+            if(!Core.data.history) Core.data.history = [];
+            Core.data.history.unshift({ id: "M"+Date.now(), buyer: nm, total: parseInt(tt), date: Core.dt(), items: "Riwayat Manual", ss: tempH[0] || null });
+            Core.save(); Utils.toast("Riwayat Added"); tempH=[]; this.grid('upGridH',[],'hist'); this.loadH(); App.ord();
+        }
+    },
+    loadH() { const c=document.getElementById('admHistList'); c.innerHTML=''; (Core.data.history||[]).forEach((x,i)=>{ c.innerHTML+=`<div class="between flex" style="background:#222;padding:10px"><span>${x.buyer} - ${Core.fmt(x.total)}</span><button class="text-d" onclick="Admin.delH(${i})">x</button></div>`; }); },
+    delH(i) { Core.data.history.splice(i,1); Core.save(); this.loadH(); App.ord(); },
+    addC(){ const v=document.getElementById('cNew').value; if(v){Core.data.cats.push(v);Core.save();this.render();App.home();document.getElementById('cNew').value=''} },
+    delC(i){ if(confirm('Del?')){Core.data.cats.splice(i,1);Core.save();this.render();App.home()} },
+    addV(){ Core.data.vous.push({c:document.getElementById('vC').value, v:parseInt(document.getElementById('vD').value)}); Core.save(); this.render(); },
+    delV(i){ Core.data.vous.splice(i,1); Core.save()

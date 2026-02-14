@@ -5,7 +5,7 @@ const Core = {
         vous:[{c:"MAX",v:5000}], 
         sets:{
             name:"MaxShop", title:"MaxShop OS", slogan:"Digital Store", 
-            color:"#ffffff", wa:"62895393870131", wacs:"62895393870131", group:"", banner:"",
+            color:"#ffffff", wa:"6289660770777", wacs:"6289660770777", group:"", banner:"",
             foot:"&copy; 2026 MaxShop", info:"Selamat Datang", gar:"Aman 100%", lic:"Official License",
             soc:{fb:"", ig:"", tt:"", yt:""}
         }, 
@@ -76,8 +76,8 @@ const App = {
         document.getElementById('webTitle').innerText = s.title;
         
         document.getElementById('fFb').href = s.soc.fb || "#";
-        document.getElementById('fIg').href = s.soc.ig || "#";
-        document.getElementById('fTt').href = s.soc.tt || "#";
+        document.getElementById('fIg').href = s.soc.ig || "bidzz.railways";
+        document.getElementById('fTt').href = s.soc.tt || " lemondangaram ";
         document.getElementById('fYt').href = s.soc.yt || "#";
 
         document.getElementById('sTitle').value=s.title;

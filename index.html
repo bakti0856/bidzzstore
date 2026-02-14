@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="MaxShop OS - Platform Digital Masa Depan">
+    <meta name="theme-color" content="#00ff88">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title id="webTitle">Bidzzstore</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loader">
+        <div class="spin"></div>
+        <h3 class="font-brand text-p">BIDZZSTORE</h3>
+        <button id="resetBtn" onclick="Core.reset()">RESET DATA</button>
+    </div>
+    
+    <div id="toast-box"></div>
+
+    <div id="max-app">
+        <nav class="navbar">
+            <div class="brand" onclick="Nav.to('home')">
+                <i class="fa-solid fa-gamepad text-p"></i> <span class="font-brand" id="navTitle">STORE</span>
+            </div>
+            <div class="desktop-nav-links">
+                <span class="d-link active" onclick="Nav.to('home', this)">HOME</span>
+                <span class="d-link" onclick="Nav.to('order', this)">ORDER</span>
+                <span class="d-link" onclick="Nav.to('lead', this)">TOP</span>
+                <span class="d-link" onclick="Nav.to('acc', this)">AKUN</span>
+            </div>
+            <div class="icon-wrap" onclick="Modal.open('modalCart')">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="badge-count" id="cartBadge">0</div>
+            </div>
+        </nav>
+
+        <div id="p-home" class="page active">
+            <div class="hero" id="heroBanner">
+                <h1 class="font-brand text-grad" style="font-size:2.5rem;margin-bottom:10px" id="heroT">Bidzzstore</h1>
+                <p class="text-m" id="heroD">Selalu siap sedia melayani dan terpercaya</p>
+            </div>
+            <div class="filter-wrap" id="catList"></div>
+            <div style="padding:0 20px 20px">
+                <input class="input" placeholder="Cari produk..." onkeyup="App.search(this.value)" style="border-radius:50px;padding-left:25px">
+            </div>
+            <div class="grid" id="prodGrid" style="padding:0 20px"></div>
+        </div>
+
+        <div id="p-order" class="page">
+            <h2 class="font-brand text-p" style="padding:20px 20px 10px">RIWAYAT PEMBELIAN</h2>
+            <div id="orderList" class="col flex gap-10" style="padding:0 20px"></div>
+        </div>
+
+        <div id="p-lead" class="page">
+            <h2 class="font-brand text-g text-center mb-3 mt-3">TOP SULTAN</h2>
+            <div style="margin:0 20px;background:#111;border-radius:12px;border:1px solid #333;overflow:hidden">
+                <table style="width:100%;border-collapse:collapse"><tbody id="leadTable"></tbody></table>
+            </div>
+        </div>
+
+        <div id="p-acc" class="page">
+            <div class="center flex col" style="padding:40px 0">
+                <div style="width:80px;height:80px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;border:2px solid var(--primary);font-size:2.5rem;color:#fff;margin-bottom:15px"><i class="fa-solid fa-user"></i></div>
+                <h2 class="font-brand">ACCOUNT</h2>
+            </div>
+            <div style="padding:0 20px" class="flex col gap-10">
+                <div id="accInfoBox" class="info-box" style="display:none">
+                    <b class="text-p"><i class="fa-solid fa-circle-info"></i> INFORMASI</b>
+                    <p id="accInfoText" class="text-m" style="font-size:0.85rem;margin-top:5px"></p>
+                </div>
+                <button class="btn btn-s between" onclick="Modal.open('modalLogin')"><span><i class="fa-solid fa-lock text-p"></i> Dashboard Admin</span> <i class="fa-solid fa-chevron-right text-m"></i></button>
+                <button class="btn btn-s between" onclick="Modal.open('modalVou')"><span><i class="fa-solid fa-ticket text-d"></i> Voucher Saya</span> <i class="fa-solid fa-chevron-right text-m"></i></button>
+                <button class="btn btn-s between" onclick="Modal.open('modalInfo')"><span><i class="fa-solid fa-shield-halved text-g"></i> Garansi & Info</span> <i class="fa-solid fa-chevron-right text-m"></i></button>
+                
+                <div class="license-box">
+                    <small style="color:#666;font-style:italic">LICENSE:</small><br>
+                    <strong>SYARAT, KETENTUAN, DAN LISENSI PENGGUNAAN</strong><br>
+<br>
+<strong>1. DASAR HUKUM (REGULASI)</strong><br>
+Layanan ini dioperasikan sesuai dengan ketentuan hukum Republik Indonesia:<br>
+• UU No. 1 Tahun 2024 (Perubahan UU ITE)<br>
+• UU No. 28 Tahun 2014 (Hak Cipta)<br>
+• UU No. 27 Tahun 2022 (Pelindungan Data Pribadi)<br>
+• UU No. 8 Tahun 1999 (Perlindungan Konsumen)<br>
+<br>
+<strong>2. LISENSI PENGGUNAAN</strong><br>
+Kami memberikan lisensi terbatas kepada Pengguna yang bersifat:<br>
+• Non-eksklusif dan dapat dibatalkan sewaktu-waktu.<br>
+• Dilarang keras melakukan rekayasa balik (reverse engineering) pada kode sumber.<br>
+• Dilarang menyalin atau mendistribusikan konten tanpa izin tertulis.<br>
+<br>
+<strong>3. KEKAYAAN INTELEKTUAL</strong><br>
+Seluruh elemen website (logo, desain, teks, dan kode) adalah milik sah pemegang hak cipta.<br>
+Pelanggaran terhadap hak kekayaan intelektual akan diproses secara hukum.<br>
+<br>
+<strong>4. KETENTUAN TRANSAKSI</strong><br>
+• Pengguna wajib memberikan data yang akurat saat melakukan transaksi.<br>
+• Kami berhak membatalkan transaksi jika ditemukan indikasi kecurangan.<br>
+• Seluruh pembayaran bersifat final kecuali ditentukan lain dalam kebijakan pengembalian.<br>
+<br>
+<strong>5. BATASAN TANGGUNG JAWAB</strong><br>
+Layanan disediakan "sebagaimana adanya". Kami tidak bertanggung jawab atas kerugian<br>
+akibat kesalahan penggunaan oleh pihak ketiga atau gangguan teknis di luar kendali.<br>
+<br>
+<strong>6. PENYELESAIAN SENGKETA</strong><br>
+Segala bentuk perselisihan akan diutamakan melalui jalur musyawarah.<br>
+Jika tidak tercapai, maka akan diselesaikan melalui pengadilan yang berwenang.<br>
+<br>
+------------------------------------------------------------<br>
+<strong>© 2026 Seluruh Hak Cipta Dilindungi Undang-Undang.</strong><br>
+------------------------------------------------------------
+                </div>
+
+                <button class="btn btn-d w-full" onclick="App.kritik()">KRITIK & SARAN</button>
+                <button class="btn btn-p w-full" onclick="App.cs()">HUBUNGI CS</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="socials">
+                <a href="#" id="fFb" class="soc"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" id="fIg" class="soc"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" id="fTt" class="soc"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" id="fYt" class="soc"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="mt-3 mb-3 text-c">
+                 <button class="btn btn-s btn-sm" onclick="App.cs()"><i class="fa-brands fa-whatsapp text-p"></i> Chat Customer Service</button>
+            </div>
+            <p class="text-m" style="font-size:0.8rem" id="fText">&copy; 2026 MaxShop.</p>
+        </footer>
+
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="Nav.to('home',this)"><i class="fa-solid fa-house"></i><span>Home</span></div>
+            <div class="nav-item" onclick="Nav.to('order',this)"><i class="fa-solid fa-receipt"></i><span>Order</span></div>
+            <div class="nav-item" onclick="Nav.to('lead',this)"><i class="fa-solid fa-crown"></i><span>Top</span></div>
+            <div class="nav-item" onclick="Nav.to('acc',this)"><i class="fa-solid fa-user"></i><span>Account</span></div>
+        </div>
+    </div>
+
+    <a href="#" onclick="App.cs()" id="fabWa" class="fab"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <div id="admin-layer" class="admin-layer" style="display:none;">
+        <div class="adm-nav">
+            <span class="font-brand text-p">ADMIN DASHBOARD</span>
+            <i class="fa-solid fa-xmark close-icon" onclick="Admin.close()" style="cursor:pointer; padding:10px;"></i>
+        </div>
+        
+        <div class="adm-container">
+            <div id="adm-home" class="adm-page active">
+                <div class="flex gap-10" style="margin-bottom:20px">
+                    <div class="w-full card p-3 center col"><small class="text-m">Total Produk</small><b class="font-num text-p" style="font-size:1.5rem" id="stProd">0</b></div>
+                    <div class="w-full card p-3 center col"><small class="text-m">Total Order</small><b class="font-num text-g" style="font-size:1.5rem" id="stOrd">0</b></div>
+                </div>
+                <div class="adm-grid">
+                    <div class="adm-card" onclick="Admin.view('add')"><i class="fa-solid fa-plus text-p"></i><h4>Post Produk</h4></div>
+                    <div class="adm-card" onclick="Admin.view('list')"><i class="fa-solid fa-list text-s"></i><h4>Kelola Stok</h4></div>
+                    <div class="adm-card" onclick="Admin.view('lead')"><i class="fa-solid fa-crown text-g"></i><h4>Sultan</h4></div>
+                    <div class="adm-card" onclick="Admin.view('hist')"><i class="fa-solid fa-clock-rotate-left text-p"></i><h4>Riwayat</h4></div>
+                    <div class="adm-card" onclick="Admin.view('rip')"><i class="fa-solid fa-user-slash text-d"></i><h4>Ripper</h4></div>
+                    <div class="adm-card" onclick="Admin.view('sec')"><i class="fa-solid fa-shield-cat text-p"></i><h4>Security</h4></div>
+                    <div class="adm-card" onclick="Admin.view('set')" style="grid-column:1/-1"><i class="fa-solid fa-gear text-m"></i><h4>Settings</h4></div>
+                </div>
+            </div>
+
+            <div id="adm-add" class="adm-page">
+                <button class="btn btn-s w-full mb-3" onclick="Admin.back()">KEMBALI</button>
+                <div class="up-grid" id="upGrid">
+                    <div class="up-box" onclick="document.getElementById('fProd').click()"><i class="fa-solid fa-camera fa-2x"></i></div>
+                </div>
+                <input type="file" id="fProd" multiple hidden onchange="Admin.proc(this,'prod')">
+                <input class="input" id="pName" placeholder="Nama Produk">
+                <div class="flex gap-10"><select id="pCat" class="input"></select><input type="number" id="pPrice" class="input" placeholder="Harga"></div>
+                <input type="number" id="pStock" class="input" placeholder="Stok" value="1">
+                <textarea class="input" id="pDesc" placeholder="Deskripsi & Info" rows="3"></textarea>
+                <button class="btn btn-p w-full" id="btnPost" onclick="Admin.addP()">POSTING</button>
+            </div>
+
+            <div id="adm-hist" class="adm-page">
+                <button class="btn btn-s w-full mb-3" onclick="Admin.back()">KEMBALI</button>
+                <h4 class="text-p mb-2">Input Riwayat Manual</h4>
+                <div class="up-grid" id="upGridH"><div class="up-box" onclick="document.getElementById('fHist').click()"><i class="fa-solid fa-image"></i></div></div>
+                <input type="file" id="fHist" hidden onchange="Admin.proc(this,'hist')">
+                <input class="input" id="hName" placeholder="Nama Pembeli">
+                <input class="input" id="hTotal" type="number" placeholder="Total Rp">
+                <button class="btn btn-p w-full mt-2" onclick="Admin.addH()">SIMPAN RIWAYAT</button>
+                <div id="admHistList" class="flex col gap-10 mt-3"></div>
+            </div>
+
+            <div id="adm-set" class="adm-page">
+                <button class="btn btn-s w-full mb-3" onclick="Admin.back()">KEMBALI</button>
+                <h4 class="text-p mb-2">Tampilan Website</h4>
+                <input class="input" id="sTitle" placeholder="Judul Tab Web">
+                <input class="input" id="sName" placeholder="Nama Header">
+                <input class="input" id="sSlogan" placeholder="Slogan">
+                <input class="input" id="sBanner" placeholder="URL Banner Image">
+                <input type="color" id="sColor" class="input" style="height:40px">
+                
+                <h4 class="text-p mb-2 mt-2">Kontak & Footer</h4>
+                <input class="input" id="sWa" placeholder="WA Admin (628..)">
+                <input class="input" id="sWaCs" placeholder="WA CS (628..)">
+                <input class="input" id="sGroup" placeholder="Link Grup CS">
+                <div class="flex gap-10"><input class="input" id="sFb" placeholder="FB"><input class="input" id="sIg" placeholder="IG"></div>
+                <div class="flex gap-10"><input class="input" id="sTt" placeholder="TikTok"><input class="input" id="sYt" placeholder="YouTube"></div>
+                <textarea class="input" id="sInfo" placeholder="Info Akun"></textarea>
+                <input class="input" id="sFoot" placeholder="Copyright Footer">
+                
+                <h4 class="text-p mb-2 mt-2">Voucher & Kategori</h4>
+                <div class="flex gap-10"><input class="input" id="cNew" placeholder="Kategori Baru"><button class="btn btn-s" onclick="Admin.addC()">+</button></div>
+                <div id="admCatList" class="flex" style="flex-wrap:wrap;gap:5px;margin-bottom:10px"></div>
+                <div class="flex gap-10"><input class="input" id="vC" placeholder="Kode Vcr"><input class="input" id="vD" placeholder="Nilai Disc"><button class="btn btn-s" onclick="Admin.addV()">+</button></div>
+                <div id="admVouList" class="flex col gap-5"></div>
+
+                <button class="btn btn-p w-full mt-3" onclick="Admin.save()">SIMPAN PENGATURAN</button>
+            </div>
+
+            <div id="adm-sec" class="adm-page">
+                <button class="btn btn-s w-full mb-3" onclick="Admin.back()">KEMBALI</button>
+                <h4 class="text-p mb-2">Ganti Password Admin</h4>
+                <input class="input" id="oldPass" placeholder="Password Lama">
+                <input class="input" id="newPass" placeholder="Password Baru">
+                <button class="btn btn-d w-full" onclick="Admin.changePass()">UPDATE PASSWORD</button>
+            </div>
+
+            <div id="adm-list" class="adm-page"><button class="btn btn-s w-full mb-3" onclick="Admin.back()">KEMBALI</button><div class="flex gap-10 mb-2"><input class="input" placeholder="Cari..." onkeyup="Admin.searchL(this.value)"></div><div id="admListP" class="flex col gap-10"></div></div>
+            <div id="adm-lead" class="adm-page"><button class="btn btn-s w-full mb-3" onclick="Admin.back()">KEMBALI</button><div class="flex gap-10"><input id="lName" class="input" placeholder="Nama"><input id="lTotal" class="input" placeholder="Total"></div><button class="btn btn-p w-full mt-2" onclick="Admin.addL()">TAMBAH</button><div id="admL" class="flex col gap-10 mt-3"></div></div>
+            <div id="adm-rip" class="adm-page"><button class="btn btn-s w-full mb-3" onclick="Admin.back()">KEMBALI</button><div class="up-grid" id="upGridR"><div class="up-box" onclick="document.getElementById('fRip').click()"><i class="fa-solid fa-camera"></i></div></div><input type="file" id="fRip" multiple hidden onchange="Admin.proc(this,'rip')"><input id="rName" class="input" placeholder="Nama"><input id="rInfo" class="input" placeholder="Info"><button class="btn btn-d w-full mt-2" onclick="Admin.addR()">BLACKLIST</button></div>
+        </div>
+    </div>
+
+    <div id="modalDetail" class="overlay"><div class="modal-box"><div class="modal-h"><span>DETAIL</span><i class="fa-solid fa-xmark close-icon" onclick="Modal.close('modalDetail')"></i></div><div class="modal-b" style="padding:0"><div class="slider"><div class="slider-tr" id="detSlider"></div></div><div style="padding:20px"><span class="text-p" style="border:1px solid var(--primary);padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:bold" id="detCat"></span><h2 id="detName" style="margin:10px 0"></h2><h2 class="text-p font-num" style="font-size:1.5rem" id="detPrice"></h2><select id="detPay" class="input"><option>DANA</option><option>GOPAY</option><option>QRIS</option><option>BANK</option></select><label class="text-m" style="font-size:0.8rem">Voucher:</label><div class="flex gap-10"><input id="detVou" class="input" placeholder="Kode"><button class="btn btn-s" style="height:48px" onclick="App.checkVou()">CEK</button></div><div style="background:#111;padding:15px;border-radius:12px;margin:15px 0"><p id="detDesc" style="color:#ccc;font-size:0.9rem;white-space:pre-wrap"></p><hr style="border:0;border-top:1px solid #333;margin:10px 0"><div class="between flex"><span>Stok</span><b id="detStock" class="text-p"></b></div></div><div class="flex gap-10"><button class="btn btn-s w-full" onclick="Cart.add()">CART</button><button class="btn btn-p w-full" id="btnBuyWa">BELI WA</button></div></div></div></div></div>
+    <div id="modalCart" class="overlay"><div class="modal-box"><div class="modal-h"><span>KERANJANG</span><i class="fa-solid fa-xmark close-icon" onclick="Modal.close('modalCart')"></i></div><div class="modal-b"><div id="cartList" class="flex col gap-10"></div><div style="margin-top:20px;border-top:1px solid #333;padding-top:15px"><select id="cartPay" class="input"><option>DANA</option><option>QRIS</option></select><div class="flex gap-10 mb-2"><input id="vIn" class="input" placeholder="Voucher"><button class="btn btn-s" onclick="Cart.apply()">CEK</button></div><div class="between flex mb-3"><b>Total</b><b class="text-p font-num" id="cTotal"></b></div><button class="btn btn-p w-full" onclick="Cart.cout()">CHECKOUT</button></div></div></div></div>
+    
+    <div id="modalLogin" class="overlay">
+        <div class="modal-box" style="height:auto">
+            <div class="modal-h"><span>LOGIN ADMIN</span><i class="fa-solid fa-xmark close-icon" onclick="Modal.close('modalLogin')"></i></div>
+            <div class="modal-b">
+                <input id="u" class="input" placeholder="User">
+                <input id="p" type="password" class="input" placeholder="Pass">
+                <button class="btn btn-p w-full mt-3" onclick="Auth.login()">MASUK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalVou" class="overlay"><div class="modal-box" style="height:auto"><div class="modal-h"><span>VOUCHER</span><i class="fa-solid fa-xmark close-icon" onclick="Modal.close('modalVou')"></i></div><div class="modal-b" id="pubVouList"></div></div></div>
+    <div id="modalInfo" class="overlay"><div class="modal-box" style="height:auto"><div class="modal-h"><span>INFO</span><i class="fa-solid fa-xmark close-icon" onclick="Modal.close('modalInfo')"></i></div><div class="modal-b"><p id="iCon" style="color:#ccc;white-space:pre-wrap"></p></div></div></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

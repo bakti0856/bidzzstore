@@ -328,6 +328,216 @@ const products = [
         description: 'Jasa pembuatan sound design profesional',
         price: 'Mulai 55k',
         whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Buat Sound mulai 55k'
+    },
+    
+    // JASA PAID TAMBAHAN
+    {
+        category: 'jasa',
+        name: 'Jasa Paid WM Ready',
+        description: 'Watermark ready langsung pakai, proses cepat',
+        price: 'Rp 15.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid WM Ready 15k'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid WM Custom',
+        description: 'Watermark custom sesuai request Anda',
+        price: 'Rp 25.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid WM Custom 25k'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid GFX',
+        description: 'Design GFX profesional untuk konten',
+        price: 'Rp 16.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid GFX 16k'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid GFX Manip Bergerak',
+        description: 'GFX manipulation dengan efek motion/bergerak',
+        price: 'Rp 40.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid GFX Manip Bergerak 40k'
+    },
+    {
+        category: 'jasa',
+        name: 'Pulsa All Operator',
+        description: 'Top up pulsa semua operator (Telkomsel, XL, Indosat, dll)',
+        price: 'Tergantung Operator',
+        whatsappText: 'Halo BidzzStore, saya ingin top up pulsa'
+    },
+    {
+        category: 'jasa',
+        name: 'Jasa Paid Poster',
+        description: 'Design poster profesional sesuai kebutuhan',
+        price: 'Rp 10.000',
+        whatsappText: 'Halo BidzzStore, saya ingin pesan Jasa Paid Poster 10k'
+    },
+    {
+        category: 'jasa',
+        name: 'Sewa Bot WhatsApp',
+        description: 'Bot WA untuk auto reply & broadcast per bulan',
+        price: 'Rp 15.000 / Bulan',
+        whatsappText: 'Halo BidzzStore, saya ingin sewa Bot WhatsApp 15k/bulan'
+    },
+    
+    // APP PREMIUM - ALIGHT MOTION
+    {
+        category: 'app',
+        name: 'Alight Motion Sharing',
+        description: 'AM Premium sharing - Akses murah meriah',
+        price: 'Rp 2.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Alight Motion Sharing 2k'
+    },
+    
+    // APP PREMIUM - CAPCUT EXTENDED
+    {
+        category: 'app',
+        name: 'CapCut Pro 6 Bulan',
+        description: 'CapCut Premium 6 bulan akses penuh',
+        price: 'Rp 35.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 6 Bulan 35k'
+    },
+    {
+        category: 'app',
+        name: 'CapCut Pro 1 Tahun',
+        description: 'CapCut Premium 1 tahun full akses',
+        price: 'Rp 70.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli CapCut Pro 1 Tahun 70k'
+    },
+    
+    // YOUTUBE PREMIUM VARIANTS
+    {
+        category: 'app',
+        name: 'YouTube Premium 1 Bulan',
+        description: 'YT Premium 1 bulan tanpa iklan',
+        price: 'Rp 2.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 1 Bulan 2k'
+    },
+    {
+        category: 'app',
+        name: 'YouTube Premium 2 Bulan',
+        description: 'YT Premium 2 bulan tanpa iklan',
+        price: 'Rp 4.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 2 Bulan 4k'
+    },
+    {
+        category: 'app',
+        name: 'YouTube Premium 3 Bulan',
+        description: 'YT Premium 3 bulan tanpa iklan',
+        price: 'Rp 6.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 3 Bulan 6k'
+    },
+    {
+        category: 'app',
+        name: 'YouTube Premium 4 Bulan',
+        description: 'YT Premium 4 bulan tanpa iklan',
+        price: 'Rp 8.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 4 Bulan 8k'
+    },
+    {
+        category: 'app',
+        name: 'YouTube Premium 5 Bulan',
+        description: 'YT Premium 5 bulan tanpa iklan',
+        price: 'Rp 12.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli YouTube Premium 5 Bulan 12k'
+    },
+    
+    // SPOTIFY FAMILY PLAN
+    {
+        category: 'app',
+        name: 'Spotify Famplan 1 Bulan Full Garansi',
+        description: 'Family plan 1 bulan dengan garansi penuh',
+        price: 'Rp 16.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Famplan 1 Bulan Full Garansi 16k'
+    },
+    {
+        category: 'app',
+        name: 'Spotify Famplan 1 Bulan Gar 7H',
+        description: 'Family plan 1 bulan garansi 7 hari',
+        price: 'Rp 10.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Famplan 1 Bulan Gar 7H 10k'
+    },
+    {
+        category: 'app',
+        name: 'Spotify Famplan 1 Bulan Gar 3H',
+        description: 'Family plan 1 bulan garansi 3 hari',
+        price: 'Rp 4.700',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Famplan 1 Bulan Gar 3H 4.7k'
+    },
+    {
+        category: 'app',
+        name: 'Spotify Famplan 2 Bulan Full Garansi',
+        description: 'Family plan 2 bulan dengan garansi penuh',
+        price: 'Rp 26.500',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Famplan 2 Bulan Full Garansi 26.5k'
+    },
+    
+    // SPOTIFY INDIVIDUAL PLAN
+    {
+        category: 'app',
+        name: 'Spotify Indplan 1 Bulan No Garansi',
+        description: 'Individual plan 1 bulan tanpa garansi',
+        price: 'Rp 9.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Indplan 1 Bulan No Garansi 9k'
+    },
+    {
+        category: 'app',
+        name: 'Spotify Indplan 1 Bulan Full Garansi',
+        description: 'Individual plan 1 bulan dengan garansi penuh',
+        price: 'Rp 17.700',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Spotify Indplan 1 Bulan Full Garansi 17.7k'
+    },
+    
+    // CANVA PRO VARIANTS
+    {
+        category: 'app',
+        name: 'Canva Pro 1 Bulan',
+        description: 'Canva Pro akses 1 bulan',
+        price: 'Rp 1.500',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro 1 Bulan 1.5k'
+    },
+    {
+        category: 'app',
+        name: 'Canva Pro 2 Bulan',
+        description: 'Canva Pro akses 2 bulan',
+        price: 'Rp 2.500',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro 2 Bulan 2.5k'
+    },
+    {
+        category: 'app',
+        name: 'Canva Pro 3 Bulan',
+        description: 'Canva Pro akses 3 bulan',
+        price: 'Rp 3.500',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro 3 Bulan 3.5k'
+    },
+    {
+        category: 'app',
+        name: 'Canva Pro 1 Tahun',
+        description: 'Canva Pro akses 1 tahun penuh',
+        price: 'Rp 5.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro 1 Tahun 5k'
+    },
+    {
+        category: 'app',
+        name: 'Canva Pro Designer',
+        description: 'Canva Pro + Designer fitur tambahan (+3K dari harga dasar)',
+        price: 'Mulai 4.500',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Pro Designer'
+    },
+    {
+        category: 'app',
+        name: 'Canva Lifetime EDU',
+        description: 'Canva akses selamanya dengan akun EDU',
+        price: 'Rp 10.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Lifetime EDU 10k'
+    },
+    {
+        category: 'app',
+        name: 'Canva Admin 30 Hari',
+        description: 'Canva Admin 30 hari - Bisa invite 30 orang, Garansi 7 hari',
+        price: 'Rp 7.000',
+        whatsappText: 'Halo BidzzStore, saya ingin beli Canva Admin 30 Hari 7k'
     }
 ];
 

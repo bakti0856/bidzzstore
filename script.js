@@ -159,7 +159,7 @@ const App = {
         const g=document.getElementById('prodGrid'); g.innerHTML='';
         l.forEach(p=>{ g.innerHTML+=`<div class="card" onclick="App.det(${p.id})"><div class="card-img-box"><img src="${p.imgs[0]}" class="card-img"></div><div class="card-body"><div class="card-title">${p.name}</div><div class="card-price">${Core.fmt(p.price)}</div></div></div>`; });
     },
-    cs(){ window.open(`https://wa.me/${Core.data.sets.wacs}?text=Halo%20Admin%20MaxShop`, '_blank'); },
+    cs(){ window.open(`https://wa.me/${Core.data.sets.wacs}?text=Halo%20Admin%20BidzzStore`, '_blank'); },
     kritik() { window.open(`https://wa.me/${Core.data.sets.wacs}?text=${Format.kritik()}`, '_blank'); }
 };
 
